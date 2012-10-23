@@ -1,0 +1,25 @@
+%div.row
+  %div.span16
+    = form_for( @role, :url => role_path, :method => :put) do |f|
+      %fieldset
+        %legend Role
+        %br
+        = @role.name
+        %br
+        Permissions
+        %br
+        %table
+          %tr
+            %th Class
+            %th Action
+            %th #{check_box_tag 'main', 0, false}
+          - @permissions.each do |permission|
+            %tr
+              %td= permission.subject_class
+              %td= permission.action
+              %td= check_box_tag 'permissions[]', permission.id, @role_permissions.include?(permission.id), {array: true, class: "check_box"} 
+
+        %div.span16.offset2
+          %div.clearfix
+            = f.submit "Update", :class => 'btn primary'
+            = link_to 'Cancel', roles_path

@@ -1,0 +1,8 @@
+%br
+%br
+%br
+%br
+= link_to "Roles", roles_path if current_user.super_admin?
+%br
+= link_to "Parts", parts_path if @current_permissions.include?(["Part", "index"])
+%br

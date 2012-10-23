@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = "Access denied. You are not authorized to access the requested page."
-    redirect_to home_path and return
+    redirect_to root_path and return
   end
 
   protected
@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    @current_ability ||= Ability.new(current_user || current_admin_user)
+    @current_ability ||= Ability.new(current_user)
+  end
+
+  def load_permissions
+    @current_permissions = current_user.role.permissions.collect{|i| [i.subject_class, i.action]}
   end
 
 end

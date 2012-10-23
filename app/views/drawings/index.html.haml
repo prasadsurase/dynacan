@@ -1,0 +1,17 @@
+%h1 Listing drawings
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @drawings.each do |drawing|
+    %tr
+      %td= link_to 'Show', drawing
+      %td= link_to 'Edit', edit_drawing_path(drawing)
+      %td= link_to 'Destroy', drawing, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Drawing', new_drawing_path

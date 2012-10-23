@@ -1,0 +1,13 @@
+= form_for @drawing do |f|
+  - if @drawing.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@drawing.errors.count, "error")} prohibited this drawing from being saved:"
+      %ul
+        - @drawing.errors.full_messages.each do |msg|
+          %li= msg
+  = f.select :part_id, @parts.collect{|i| [i.name, i.id]}
+  = f.label :sheet_number
+  = f.text_box :sheet_number
+
+  .actions
+    = f.submit 'Save'

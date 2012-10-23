@@ -1,4 +1,8 @@
 Dynacan::Application.routes.draw do
+  resources :drawings
+
+  resources :parts
+
   devise_for :users
   resources :roles
 

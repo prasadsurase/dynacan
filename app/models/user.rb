@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role_id, :name
 
   belongs_to :role
+
+  def super_admin?
+    self.role.name == "Super Admin"
+  end
 end

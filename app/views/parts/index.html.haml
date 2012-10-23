@@ -1,0 +1,18 @@
+%h1 Listing parts
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @parts.each do |part|
+    %tr
+      %td= part.name
+      %td= link_to 'Show', part if @current_permissions.include?(["Part", "show"])
+      %td= link_to 'Edit', edit_part_path(part) if @current_permissions.include?(["Part", "update"])
+      %td= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } if @current_permissions.include?(["Part", "destroy"])
+
+%br
+
+= link_to 'New Part', new_part_path if @current_permissions.include?(['Part', 'create'])

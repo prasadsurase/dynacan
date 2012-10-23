@@ -1,0 +1,14 @@
+%html
+%head
+  %title Dynacan
+  = stylesheet_link_tag "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+  - if user_signed_in?
+    = link_to "Sign out", destroy_user_session_path, :method => :delete
+    = current_user.name.titleize
+    %br
+    %br
+    = link_to "Home", root_path
+%body
+  = yield 

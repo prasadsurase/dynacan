@@ -1,0 +1,2 @@
+module DrawingsHelper
+end

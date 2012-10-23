@@ -1,0 +1,15 @@
+%h1 Super Admin: Listing Roles
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+
+  - @roles.each do |role|
+    %tr
+      %td= role.name
+      %td= link_to 'Show', role
+      %td= link_to 'Edit', edit_role_path(role)
+
+%br

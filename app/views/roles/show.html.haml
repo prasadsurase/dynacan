@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @role.name
+
+Permissions
+%table
+  %tr
+    %th Class
+    %th Action
+
+  - @permissions.each do |permission|
+    %tr
+      %td= permission.subject_class
+      %td= permission.action
+
+= link_to 'Back', roles_path
